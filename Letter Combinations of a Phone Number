@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        String arr[]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        List<String>li=new ArrayList<>();
+        if(digits.length()==0){
+            return li;
+        }
+        combination(digits,"",arr,li);
+        return li;
+    }
+    public static void combination(String ques,String ans,String arr[],List<String>li){
+        if(ques.length()==0){
+            li.add(ans);
+            return;
+        }
+        char ch=ques.charAt(0);
+        String str=arr[ch-48];
+        for(int i=0;i<str.length();i++){
+            combination(ques.substring(1), ans+str.charAt(i), arr,li);
+        }
+    }
+}
